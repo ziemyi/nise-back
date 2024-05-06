@@ -28,13 +28,34 @@ model Paciente {
 model Diario {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime? @updatedAt
 
   titulo    String
-  descricao String
+  descricao String @db.Text
 
   idPaciente Int
   paciente   Paciente @relation(fields: [idPaciente], references: [id])
 
   @@map("diarios")
+}
+
+model Artigo{
+  idArtigo        Int      @id @default(autoincrement())
+
+  createdArtigoAt DateTime @default(now())
+  updatedArtigoAt DateTime?
+
+  tituloArtigo String
+  resumoArtigo String
+  conteudoArtigo String @db.Text
+  
+  idPsicologo Int
+  psicologo   Psicologo @relation(fields: [idPsicologo], references: [idPsicologo])
+}
+
+model Psicologo{
+  idPsicologo         Int      @id @default(autoincrement())
+  nomePsicologo String
+
+  artigosPsicologo Artigo[]
 }

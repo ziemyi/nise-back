@@ -4,6 +4,7 @@ import { PacienteModule } from './paciente/paciente.module';
 import { DiarioModule } from './diario/diario.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
+import { ArtigoModule } from './artigo/artigo.module';
 
 
 
@@ -16,6 +17,7 @@ import { ConfigModule } from '@nestjs/config';
     DiarioModule,
     PrismaModule,
     ConfigModule.forRoot({isGlobal: true,}),
+    ArtigoModule
   ],
 })
 export class AppModule {}
